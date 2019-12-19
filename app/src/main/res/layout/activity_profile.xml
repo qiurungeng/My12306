@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+    <LinearLayout
+        style="@style/wrap_layout"
+        >
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="用户名"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_username"
+                android:text="编辑用户名"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+
+            <ImageView
+                style="@style/img_arrow"
+                />
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="姓名"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_name"
+                android:text="编辑姓名"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>     <!-- 分割线 -->
+
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="证件类型"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_IDCard_type"
+                android:text="编辑证件类型"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <!-- 分割线 -->
+        <!-- 无圆角-->
+
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>
+        <!-- 下圆角-->
+        <LinearLayout style="@style/bottom_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="证件号码"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_IDCard_number"
+                android:text="编辑证件号码"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <!-- 全圆角-->
+    <LinearLayout style="@style/wrap_layout">
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="乘客类型"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_user_type"
+                android:text="乘客类型"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <!-- 分割线 -->
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>
+        <!-- 下圆角-->
+        <LinearLayout style="@style/bottom_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="电话号码"
+                android:layout_weight="1"/>
+            <EditText
+                style="@style/usertext"
+                android:id="@+id/profile_phone_number"
+                android:text="编辑电话号"
+                android:gravity="right"
+                android:paddingRight="12dp"
+                android:layout_weight="6"
+                android:background="@color/white"/>
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/profile_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/colorPrimary"
+        android:text="编辑"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+</LinearLayout>

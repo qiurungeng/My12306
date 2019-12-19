@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/toolbar_train"
+        android:title="列车时刻查询"
+        android:icon="@drawable/train"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/toolbar_profile"
+        android:title="个人信息设置"
+        android:icon="@drawable/username"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/username"
+        app:showAsAction="never"/>
+</menu>

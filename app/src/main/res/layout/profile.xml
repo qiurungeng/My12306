@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/ButtonBar"
+    android:background="@android:color/darker_gray">
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="12dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:divider="@drawable/divider">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="25dp"-->
+<!--                android:text="用户名:"-->
+<!--                android:drawableLeft="@drawable/user_black"-->
+<!--                android:drawablePadding="15dp"/>-->
+<!--            <EditText-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="asd"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <ImageView-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="2dp"-->
+<!--            android:background="@android:color/black"/>-->
+
+<!--    </LinearLayout>-->
+
+
+    <LinearLayout
+        style="@style/wrap_layout"
+        >
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="用户名"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="姓名"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>     <!-- 分割线 -->
+
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="证件类型"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <!-- 分割线 -->
+        <!-- 无圆角-->
+
+        <View
+            style="@style/bg_line"
+            android:layout_height="2px"/>
+        <!-- 下圆角-->
+        <LinearLayout style="@style/bottom_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="证件号码"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <!-- 全圆角-->
+    <LinearLayout style="@style/wrap_layout">
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="乘客类型"/>
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <!-- 下圆角-->
+        <LinearLayout style="@style/bottom_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="电话号码"/>
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_quit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/colorPrimary"
+        android:text="编辑"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+
+</LinearLayout>
