@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.neu.neuassigment">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,6 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".SearchFragment"></activity>
         <activity android:name=".SearchResultFragment" />
-        <activity android:name=".TrainDetailActivity" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".LoginActivity"

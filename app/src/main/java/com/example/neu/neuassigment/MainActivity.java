@@ -21,6 +21,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout myDrawerLayout;
+    protected String start_station;
+    protected String end_station;
+    protected String isHigh;
+    protected String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        replaceFragment(new SearchFragment());
+        replaceFragment(new SearchFragment(),"searchFragment");
     }
 
 
@@ -71,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.toolbar_train:
                 Toast.makeText(this,"查看列车时刻表",Toast.LENGTH_SHORT).show();
-                replaceFragment(new SearchFragment());
+                Fragment searchFragment=getSupportFragmentManager().findFragmentByTag("searchFragment");
+                if (searchFragment==null){
+                    replaceFragment(new SearchFragment(),"searchFragment");
+                }else replaceFragment(searchFragment);
                 break;
             case R.id.toolbar_profile:
                 Toast.makeText(this,"进入个人信息页",Toast.LENGTH_SHORT).show();
@@ -88,13 +95,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     //替换Fragment
-    protected void replaceFragment(Fragment fragment){
+    protected void replaceFragment(Fragment fragment,String tag){
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();
-        transaction.replace(R.id.search_ticket,fragment);
+        transaction.replace(R.id.search_ticket,fragment,tag);
         transaction.addToBackStack(null);
         transaction.commit();
     }
-//
+
+    protected void replaceFragment(Fragment fragment){
+        replaceFragment(fragment,fragment.getTag());
+    }
 
 }

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class SearchFragment extends Fragment {
     private EditText startStation;
     private EditText endStation;
     private TextView dateTV;
+    private RadioGroup isHighRG;
     private Button searchBtn;
 
     @Override
@@ -34,6 +37,7 @@ public class SearchFragment extends Fragment {
         startStation=(EditText)view.findViewById(R.id.start_station);
         endStation=(EditText)view.findViewById(R.id.end_station);
         dateTV =(TextView)view.findViewById(R.id.date);
+        isHighRG=(RadioGroup)view.findViewById(R.id.rg_isHigh);
         searchBtn=(Button)view.findViewById(R.id.search_btn);
         return view;
     }
@@ -51,11 +55,10 @@ public class SearchFragment extends Fragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainActivity,startStation.getText().toString()+","+
-                        endStation.getText().toString()+","+dateTV.getText().toString(),Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(MainActivity.this,TrainDetailActivity.class);
-//                startActivity(intent);
-                mainActivity.replaceFragment(new SearchResultFragment());
+                Toast.makeText(mainActivity,getStartStation()+","+
+                        getEndStation()+","+getDate()+
+                        ","+isHigh(),Toast.LENGTH_SHORT).show();
+                mainActivity.replaceFragment(new SearchResultFragment(),"searchResultFragment");
             }
         });
     }
@@ -64,7 +67,14 @@ public class SearchFragment extends Fragment {
     /**查询界面**/
 
     public void setDateValue(int year,int month,int day){
-        dateTV.setText(year+"年"+(month+1+"月"+day));
+        month+=1;
+        String month_string;
+        String day_string;
+        if (month<10)month_string="0"+month;
+        else month_string=""+month;
+        if (day<10)day_string="0"+day;
+        else day_string=""+day;
+        dateTV.setText(year+"-"+month_string+"-"+day_string);
     }
 
     //设置日期的按钮事件
@@ -72,6 +82,16 @@ public class SearchFragment extends Fragment {
         DialogFragment dialogFragment = new DatePickerFragment();
         dialogFragment.show(mainActivity.getSupportFragmentManager(), "datePicker");
 
+    }
+
+    /**获取TextView的值**/
+    protected String getStartStation(){ return startStation.getText().toString(); }
+    protected String getEndStation(){ return endStation.getText().toString(); }
+    protected String getDate(){ return dateTV.getText().toString(); }
+    protected String isHigh(){
+        RadioButton rb=(RadioButton) getView().findViewById(isHighRG.getCheckedRadioButtonId());
+        String isHigh=rb.getText().toString();
+        return isHigh.equals("高铁")?"1":"0";
     }
 
 }
