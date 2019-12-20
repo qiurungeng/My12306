@@ -1,7 +1,6 @@
 package com.example.neu.neuassigment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,19 +16,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.neu.neuassigment.db.User;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout myDrawerLayout;
-    protected String start_station;
-    protected String end_station;
-    protected String isHigh;
-    protected String date;
+    private User loginUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        loginUser=(User) getIntent().getSerializableExtra("loginUser");
+        System.out.println(loginUser);
 
         //Toolbar
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 myDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.toolbar_train:
+                //菜单栏：点击列车时刻表查询按钮
                 Toast.makeText(this,"查看列车时刻表",Toast.LENGTH_SHORT).show();
                 Fragment searchFragment=getSupportFragmentManager().findFragmentByTag("searchFragment");
                 if (searchFragment==null){
@@ -81,9 +83,12 @@ public class MainActivity extends AppCompatActivity {
                 }else replaceFragment(searchFragment);
                 break;
             case R.id.toolbar_profile:
+                //菜单栏：点击个人信息编辑按钮
                 Toast.makeText(this,"进入个人信息页",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
-                startActivity(intent);
+                Fragment profileFragment=getSupportFragmentManager().findFragmentByTag("profileFragment");
+                if (profileFragment==null){
+                    replaceFragment(new ProfileFragment(),"profileFragment");
+                }else replaceFragment(profileFragment);
                 break;
             case R.id.settings:
                 Toast.makeText(this,"SETTINGS",Toast.LENGTH_SHORT).show();
@@ -107,4 +112,8 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(fragment,fragment.getTag());
     }
 
+
+    protected User getUser() {
+        return loginUser;
+    }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.neu.neuassigment.LoginActivity"
+    tools:context="com.example.neu.neuassigment.RegisterActivity"
     android:orientation="vertical"
     android:background="#1AA4FC">
 
@@ -14,26 +14,40 @@
         android:paddingRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="5">
 
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/register_username"
             android:textColor="@android:color/white"
             android:hint="请输入账号:"
             android:textColorHint="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="20dp"
-            android:layout_above="@+id/password"
+            android:layout_above="@+id/register_password"
             android:background="@drawable/bg_blue"
             android:drawableLeft="@drawable/username"
             android:drawablePadding="5dp"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/register_password"
             android:hint="请输入密码:"
-            android:layout_above="@+id/login_button"
+            android:layout_above="@+id/register_confirm_password"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_blue"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="5dp"
+            android:inputType="textPassword"/>
+
+        <EditText
+            android:id="@+id/register_confirm_password"
+            android:hint="请再次输入密码:"
+            android:layout_above="@+id/register_button"
             android:textColorHint="@android:color/white"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
@@ -45,19 +59,19 @@
             android:inputType="textPassword"/>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bg_blue"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="登录"
+            android:text="注册"
             android:textColor="@android:color/white"
             android:textSize="19dp" />
 
-    
+
         <TextView
             android:id="@+id/tv_login"
-            android:layout_above="@id/username"
+            android:layout_above="@id/register_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的12306"
@@ -79,14 +93,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="4">
 
         <TextView
-            android:id="@+id/jump_to_register"
+            android:id="@+id/jump_to_Login"
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创建账号"
+            android:text="返回登录界面"
             android:padding="15dp"
             android:textSize="20dp"
             android:layout_centerHorizontal="true"

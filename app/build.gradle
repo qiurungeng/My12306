@@ -41,4 +41,5 @@ dependencies {
 
     compileOnly "org.projectlombok:lombok:1.16.18"
     implementation 'org.glassfish:javax.annotation:10.0-b28'
+    implementation 'org.litepal.android:core:1.4.1'
 }

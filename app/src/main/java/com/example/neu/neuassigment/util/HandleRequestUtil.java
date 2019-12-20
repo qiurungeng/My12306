@@ -15,7 +15,7 @@ import okhttp3.Response;
 public class HandleRequestUtil {
 
     //向极速数据火车票查询API发送请求时时要用到的appkey，可在极速数据网注册账号获得
-    private static String appkey="";
+    private static String appkey="574743780fae33cd";
 
     /**
      * 使用极速数据火车站站查询API请求列车班次及时刻表

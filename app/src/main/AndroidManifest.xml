@@ -3,20 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.neu.neuassigment">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="我的12306"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SearchFragment"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:label">
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".SearchFragment" />
         <activity android:name=".SearchResultFragment" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".LoginActivity"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
