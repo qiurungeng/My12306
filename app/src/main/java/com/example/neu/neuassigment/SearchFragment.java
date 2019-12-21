@@ -1,7 +1,9 @@
 package com.example.neu.neuassigment;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -35,13 +37,13 @@ public class SearchFragment extends Fragment {
     private TextView dateTV;
     private RadioGroup isHighRG;
     private Button searchTrainInfoBtn;
-//    private SearchView searchStationsSV;
-//    private ListView searchStationResultLV;
+    private SharedPreferences myPref;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivity=(MainActivity)getActivity();
+        myPref = PreferenceManager.getDefaultSharedPreferences(getContext());
     }
 
     @Nullable
@@ -61,17 +63,21 @@ public class SearchFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //点击车站TextView弹出对话框
+        startStation.setText(myPref.getString("startStation","北京"));
+        endStation.setText(myPref.getString("endStation","上海"));
+        dateTV.setText(myPref.getString("date","点击选择日期"));
+
+        //站点TextView监听：点击车站TextView弹出对话框
         startStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popSearchDialog(startStation);
+                popSearchDialog("startStation",startStation);
             }
         });
         endStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popSearchDialog(endStation);
+                popSearchDialog("endStation",endStation);
             }
         });
 
@@ -107,7 +113,9 @@ public class SearchFragment extends Fragment {
         else month_string=""+month;
         if (day<10)day_string="0"+day;
         else day_string=""+day;
-        dateTV.setText(year+"-"+month_string+"-"+day_string);
+        String dateString=year+"-"+month_string+"-"+day_string;
+        dateTV.setText(dateString);
+        saveStringLocally("date",dateString);
     }
 
     //设置日期的按钮事件
@@ -120,7 +128,7 @@ public class SearchFragment extends Fragment {
     /**车站检索**/
 
     //弹出并加载车站搜索对话框
-    private void popSearchDialog(final TextView station){
+    private void popSearchDialog(final String sharedPreferencesKey,final TextView station){
         //点击站点TextView弹出对话框
         final Dialog dialog = new Dialog(getContext());
         LayoutInflater inflater=getLayoutInflater();
@@ -163,8 +171,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String)adapter.getItem(position);
-                //xxxxxxxxxxxx 其他操作
                 station.setText(item);
+                saveStringLocally(sharedPreferencesKey,item);
                 dialog.dismiss();
             }
         });
@@ -172,6 +180,7 @@ public class SearchFragment extends Fragment {
         dialog.show();
     }
 
+    /**获取站点名数组**/
     private String[] getAllStations(){
         ArrayList<String> stationNames=new ArrayList<>();
         List<Station> stations=DataSupport.findAll(Station.class);
@@ -190,6 +199,13 @@ public class SearchFragment extends Fragment {
         return returnArray;
     }
 
+    /**SharePref保存String到本地**/
+    private void saveStringLocally(String key,String value){
+        SharedPreferences.Editor editor=myPref.edit();
+        editor.putString(key,value);
+        System.out.println("已保存————————————————————————");
+        editor.apply();
+    }
 
     /**协助其他Activity获取TextView的值**/
     protected String getStartStation(){ return startStation.getText().toString(); }
