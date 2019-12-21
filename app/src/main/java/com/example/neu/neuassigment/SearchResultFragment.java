@@ -3,11 +3,13 @@ package com.example.neu.neuassigment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.neu.neuassigment.adapter.TrainDetailAdapter;
 import com.example.neu.neuassigment.gson.TrainDetail;
@@ -22,7 +24,10 @@ public class SearchResultFragment extends Fragment {
     private String isHigh;
     private String date;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private TrainDetailAdapter adapter;
     private List<TrainDetail> trainDetailList;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class SearchResultFragment extends Fragment {
         end_station=searchFragment.getEndStation();
         isHigh=searchFragment.isHigh();
         date=searchFragment.getDate();
+
         initTrainDetails();
     }
 
@@ -45,8 +51,19 @@ public class SearchResultFragment extends Fragment {
         RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        TrainDetailAdapter adapter=new TrainDetailAdapter(trainDetailList);
+        adapter=new TrainDetailAdapter(trainDetailList);
         recyclerView.setAdapter(adapter);
+
+        //下拉刷新控件
+        swipeRefreshLayout=(SwipeRefreshLayout)view.findViewById(R.id.swip_refresh);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+            @Override
+            public void onRefresh() {
+                refreshTrainDetails();
+            }
+        });
+
         return view;
     }
 
@@ -54,6 +71,7 @@ public class SearchResultFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
 
 
     /**
@@ -64,5 +82,12 @@ public class SearchResultFragment extends Fragment {
         String response= HandleRequestUtil.handleSearchTrainRequest(start_station,end_station,isHigh,date);
         trainDetailList= HandleResponseUtil.handleSearchTrainResponse(response);
 
+    }
+
+    private void refreshTrainDetails(){
+        initTrainDetails();
+        Toast.makeText(getContext(),"已刷新到最新的列车时刻表",Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

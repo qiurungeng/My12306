@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mail"
+        android:id="@+id/nav_username"
         android:layout_alignParentBottom="true"
         android:text="aaaaa@qq.com"
         android:textColor="#FFF"
@@ -21,9 +21,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:layout_above="@+id/mail"
-        android:text="Tony"
+        android:id="@+id/nav_name"
+        android:layout_above="@+id/nav_username"
+        android:text="姓名"
         android:textColor="#FFF"
         android:textSize="14sp"/>
 
