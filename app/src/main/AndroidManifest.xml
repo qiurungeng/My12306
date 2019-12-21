@@ -17,7 +17,7 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".SearchFragment" />
         <activity android:name=".SearchResultFragment" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileFragment" />
         <activity
             android:name=".LoginActivity"
             android:launchMode="singleTask"

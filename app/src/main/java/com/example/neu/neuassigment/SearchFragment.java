@@ -93,10 +93,12 @@ public class SearchFragment extends Fragment {
         searchTrainInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainActivity,getStartStation()+","+
-                        getEndStation()+","+getDate()+
-                        ","+isHigh(),Toast.LENGTH_SHORT).show();
-                mainActivity.replaceFragment(new SearchResultFragment(),"searchResultFragment");
+                if (!getDate().equals("点击选择日期")){
+                    mainActivity.replaceFragment(new SearchResultFragment(),"searchResultFragment");
+                }else {
+                    Toast.makeText(mainActivity,"请选择日期！",Toast.LENGTH_SHORT);
+                }
+
             }
         });
 
@@ -132,7 +134,7 @@ public class SearchFragment extends Fragment {
         //点击站点TextView弹出对话框
         final Dialog dialog = new Dialog(getContext());
         LayoutInflater inflater=getLayoutInflater();
-        final View dialogView=inflater.inflate(R.layout.dialog_search, null);
+        final View dialogView=inflater.inflate(R.layout.dialog_station, null);
         dialog.setContentView(dialogView);
 
         //找到搜索框与结果列表
