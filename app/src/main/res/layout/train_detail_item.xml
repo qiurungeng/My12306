@@ -50,6 +50,7 @@
                 android:id="@+id/time_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="1天13时13分"/>
 
         </LinearLayout>

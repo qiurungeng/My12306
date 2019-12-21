@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <litepal>
     <dbname value="mydb"/>
-    <version value="1"/>
+    <version value="2"/>
     <list>
-        <mapping class="com.example.neu.neuassigment.db.User"></mapping>
+        <mapping class="com.example.neu.neuassigment.db.User"/>
+        <mapping class="com.example.neu.neuassigment.db.Station"/>
     </list>
 </litepal>

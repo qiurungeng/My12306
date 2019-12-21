@@ -33,7 +33,7 @@
         <!-- 无圆角-->
         <LinearLayout style="@style/mid_layout">
 
-            <EditText
+            <TextView
                 style="@style/usertext"
                 android:text="沈阳"
                 android:textSize="30dp"
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/exchange"/>
 
-            <EditText
+            <TextView
                 style="@style/usertext"
                 android:text="北京"
                 android:textSize="30dp"

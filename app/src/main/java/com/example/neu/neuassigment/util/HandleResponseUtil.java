@@ -41,7 +41,7 @@ public class HandleResponseUtil {
     }
 
     public static List<TrainDetail> exampleHandleResponse() throws IOException {
-        BufferedReader bufferedReader=new BufferedReader(new FileReader("C:\\Users\\Apollos\\Desktop\\example.json"));
+        BufferedReader bufferedReader=new BufferedReader(new FileReader("example.json"));
         String response=bufferedReader.readLine();
         return handleSearchTrainResponse(response);
     }
