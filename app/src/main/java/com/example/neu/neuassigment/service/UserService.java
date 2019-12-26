@@ -15,10 +15,11 @@ import okhttp3.RequestBody;
 
 public class UserService {
 
+    private static final String SERVER_ADDR="http://118.202.13.155:12306";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private static final String LOGIN_URL="http://192.168.226.130:8080/login";
-    private static final String REGISTER_URL="http://192.168.226.130:8080/register";
-    private static final String CHANGE_PROFILE_URL="http://192.168.226.130:8080/changeProfile";
+    private static final String LOGIN_URL=SERVER_ADDR+"/login";
+    private static final String REGISTER_URL=SERVER_ADDR+"/register";
+    private static final String CHANGE_PROFILE_URL=SERVER_ADDR+"/changeProfile";
     private Gson gson=new Gson();
 
     /**
