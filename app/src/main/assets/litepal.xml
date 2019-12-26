@@ -3,7 +3,7 @@
     <dbname value="mydb"/>
     <version value="2"/>
     <list>
-        <mapping class="com.example.neu.neuassigment.db.User"/>
-        <mapping class="com.example.neu.neuassigment.db.Station"/>
+        <mapping class="com.example.neu.neuassigment.bean.User"/>
+        <mapping class="com.example.neu.neuassigment.bean.Station"/>
     </list>
 </litepal>

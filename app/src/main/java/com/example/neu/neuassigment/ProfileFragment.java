@@ -10,15 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.example.neu.neuassigment.db.User;
+import com.example.neu.neuassigment.bean.User;
+import com.example.neu.neuassigment.gson.ResultDTO;
+import com.example.neu.neuassigment.service.UserService;
 
 public class ProfileFragment extends Fragment {
-
+    UserService userService=new UserService();
     private User loginUser;
     private EditText username;
-//    private EditText userType;
-//    private EditText idCardType;
     private EditText name;
     private EditText idCardNumber;
     private EditText phoneNumber;
@@ -47,12 +48,12 @@ public class ProfileFragment extends Fragment {
         String[] utype=new String[]{"成人","军人","学生"};
         ArrayAdapter<String> userTypeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, utype);
         userType.setAdapter(userTypeAdapter);
-        userType.setSelection(getItemIndexInArray(utype,loginUser.getUserType()));
+        if (loginUser.getUserType()!=null)userType.setSelection(getItemIndexInArray(utype,loginUser.getUserType()));
         //ID卡类型
         String[] idctype=new String[]{"身份证","学生证","军人证"};
         ArrayAdapter<String> idCardTypeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, idctype);
         idCardType.setAdapter(idCardTypeAdapter);
-        idCardType.setSelection(getItemIndexInArray(idctype,loginUser.getIdCardType()));
+        if(loginUser.getIdCardType()!=null)idCardType.setSelection(getItemIndexInArray(idctype,loginUser.getIdCardType()));
         //姓名
         name.setText(loginUser.getName());
         //ID号
@@ -77,7 +78,10 @@ public class ProfileFragment extends Fragment {
                     loginUser.setIdCardType(idCardType.getSelectedItem().toString());
                     loginUser.setPhoneNumber(phoneNumber.getText().toString());
                     loginUser.setUserType(userType.getSelectedItem().toString());
-                    loginUser.updateAll("username = ?",loginUser.getUsername());
+//                    loginUser.updateAll("username = ?",loginUser.getUsername());
+                    ResultDTO resultDTO = userService.changeProfile(loginUser.getUsername(), loginUser.getName(), loginUser.getUserType(),
+                            loginUser.getIdCardType(), loginUser.getIdCardNumber(), loginUser.getPhoneNumber());
+                    Toast.makeText(getContext(),resultDTO.getMsg(),Toast.LENGTH_SHORT).show();
                     inEditing=false;
                     button.setText("编辑");
                     setEditable(false);

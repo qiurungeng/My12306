@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.neu.neuassigment.db.User;
+import com.example.neu.neuassigment.bean.User;
 
 
 public class MainActivity extends AppCompatActivity {

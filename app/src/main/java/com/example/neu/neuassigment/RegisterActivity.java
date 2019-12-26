@@ -9,11 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.neu.neuassigment.db.User;
-
-import org.litepal.crud.DataSupport;
+import com.example.neu.neuassigment.gson.ResultDTO;
+import com.example.neu.neuassigment.service.UserService;
 
 public class RegisterActivity extends AppCompatActivity {
+    UserService userService=new UserService();
     String username;
     String password;
     String confirmPassword;
@@ -56,22 +56,25 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (!password.equals(confirmPassword)){
                     Toast.makeText(RegisterActivity.this,"密码与确认密码填写不一致，请重试",Toast.LENGTH_SHORT).show();
                 }else {
-                    User user=new User();
-                    user.setUsername(username);
-                    user.setPassword(password);
-
-                    User check= DataSupport.where("username = ? ",username).findFirst(User.class);
-                    System.out.println(check);
-                    if (check!=null){
-                        Toast.makeText(RegisterActivity.this,"该用户名已被注册，换一个试试？",Toast.LENGTH_SHORT).show();
-                    }else {
-                        boolean save = user.save();
-                        if (save){
-                            Toast.makeText(RegisterActivity.this,"注册成功！返回登录界面进行登录吧~",Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(RegisterActivity.this,"注册失败！",Toast.LENGTH_SHORT).show();
-                        }
-                    }
+//                    User user=new User();
+//                    user.setUsername(username);
+//                    user.setPassword(password);
+//
+//                    User check= DataSupport.where("username = ? ",username).findFirst(User.class);
+//                    System.out.println(check);
+//                    if (check!=null){
+//                        Toast.makeText(RegisterActivity.this,"该用户名已被注册，换一个试试？",Toast.LENGTH_SHORT).show();
+//                    }else {
+//                        boolean save = user.save();
+//                        if (save){
+//                            Toast.makeText(RegisterActivity.this,"注册成功！返回登录界面进行登录吧~",Toast.LENGTH_SHORT).show();
+//                        }else {
+//                            Toast.makeText(RegisterActivity.this,"注册失败！",Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+                    //填写正确，向服务端发送注册请求
+                    ResultDTO resultDTO=userService.register(username,password);
+                    Toast.makeText(RegisterActivity.this,resultDTO.getMsg(),Toast.LENGTH_SHORT).show();
                 }
             }
         });

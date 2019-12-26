@@ -1,4 +1,4 @@
-package com.example.neu.neuassigment.db;
+package com.example.neu.neuassigment.bean;
 
 import org.litepal.crud.DataSupport;
 
@@ -15,4 +15,5 @@ public class User extends DataSupport implements Serializable {
     String idCardType;
     String idCardNumber;
     String phoneNumber;
+
 }

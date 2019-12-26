@@ -1,4 +1,4 @@
-package com.example.neu.neuassigment.db;
+package com.example.neu.neuassigment.bean;
 
 import org.litepal.crud.DataSupport;
 

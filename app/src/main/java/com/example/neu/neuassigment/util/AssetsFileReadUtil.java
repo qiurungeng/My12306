@@ -2,7 +2,7 @@ package com.example.neu.neuassigment.util;
 
 import android.content.Context;
 
-import com.example.neu.neuassigment.db.Station;
+import com.example.neu.neuassigment.bean.Station;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

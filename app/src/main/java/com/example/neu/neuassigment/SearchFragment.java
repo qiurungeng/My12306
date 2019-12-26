@@ -21,7 +21,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.neu.neuassigment.db.Station;
+import com.example.neu.neuassigment.bean.Station;
 import com.example.neu.neuassigment.util.AssetsFileReadUtil;
 
 import org.litepal.crud.DataSupport;

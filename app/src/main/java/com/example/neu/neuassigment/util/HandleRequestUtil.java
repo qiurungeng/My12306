@@ -42,7 +42,7 @@ public class HandleRequestUtil {
         return response;
     }
 
-    private String sendRequestWithOkHttp(final Request request){
+    public String sendRequestWithOkHttp(final Request request){
         //创建发送请求的新线程
         RequestThread requestThread=new RequestThread();
         requestThread.setRequest(request);
